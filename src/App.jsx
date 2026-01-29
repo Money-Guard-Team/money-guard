@@ -16,8 +16,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/currency" element={<CurrencyPage />} />
-        <Route path="*" element={<LoginPage />} />{" "}
-        {/* Yanlış adrese gideni Login'e at */}
+
+        <Route path="*" element={<LoginPage />} />
       </Routes>
       <Loader />
     </div>
