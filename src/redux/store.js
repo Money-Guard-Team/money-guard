@@ -9,19 +9,23 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // LocalStorage kullanır
-import { authReducer } from "./auth/authSlice";
+import storage from "redux-persist/lib/storage";
 
-// Auth verilerini kaydetmek için ayarlar
+import { authReducer } from "./auth/authSlice";
+import { globalReducer } from "./global/globalSlice";
+import { currencyReducer } from "./currency/currencySlice";
+
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"], // Sadece token'ı kalıcı hafızaya at
+  whitelist: ["token"],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    global: globalReducer,
+    currency: currencyReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
