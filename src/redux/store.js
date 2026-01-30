@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+// Slice Importları (Takımın yazdığı tüm parçalar)
 import { authReducer } from "./auth/authSlice";
 import { globalReducer } from "./global/globalSlice"; // YENİ EKLENDİ
 import { currencyReducer } from "./currency/currencySlice"; // YENİ EKLENDİ
@@ -18,6 +19,7 @@ import { transactionsReducer } from './transactions/slice';
 import { balanceReducer } from './balance/slice';
 
 
+// Auth için Persist Ayarı (Token'ı hafızada tutmak için)
 const authPersistConfig = {
   key: "auth",
   storage,
