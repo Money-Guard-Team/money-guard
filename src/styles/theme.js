@@ -17,3 +17,4 @@ export const theme = {
   },
   spacing: (value) => `${4 * value}px`, // 4'ün katları şeklinde boşluk (spacing(2) = 8px)
 };
+ 
