@@ -13,9 +13,11 @@ import storage from "redux-persist/lib/storage";
 
 // Slice Importları (Takımın yazdığı tüm parçalar)
 import { authReducer } from "./auth/authSlice";
-import { globalReducer } from "./global/globalSlice";
-import { currencyReducer } from "./currency/currencySlice";
-import { financeReducer } from "./finance/financeSlice"; // Main'den gelen yeni parça
+import { globalReducer } from "./global/globalSlice"; // YENİ EKLENDİ
+import { currencyReducer } from "./currency/currencySlice"; // YENİ EKLENDİ
+import { transactionsReducer } from './transactions/slice';
+import { balanceReducer } from './balance/slice';
+
 
 // Auth için Persist Ayarı (Token'ı hafızada tutmak için)
 const authPersistConfig = {
@@ -27,9 +29,10 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    global: globalReducer,
-    currency: currencyReducer,
-    finance: financeReducer, // Finance (Transactions) buraya eklendi
+    global: globalReducer, // EKLENDİ
+    currency: currencyReducer, // EKLENDİ
+    transactions: transactionsReducer,
+    balance: balanceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
