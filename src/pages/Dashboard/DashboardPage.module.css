@@ -1,0 +1,9 @@
+.wrapper {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1b163f 0%, #120e2b 100%);
+}
+
+.content {
+    display: flex;
+    height: calc(100vh - 64px);
+}
