@@ -2,9 +2,15 @@ import { createGlobalStyle } from "styled-components";
 import "modern-normalize";
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
-    font-family: 'Poppins', sans-serif; /* Google Fonts'tan eklenecek */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${({ theme }) => theme.colors.background};
@@ -34,6 +40,12 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+  }
+
+  input, textarea, select {
     font-family: inherit;
   }
 `;

@@ -11,15 +11,15 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// DİKKAT: Default export olanlarda süslü parantez {} kullanılmaz!
-import authReducer from "./auth/authSlice"; // DÜZELDİ
-import currencyReducer from "./currency/currencySlice"; // DÜZELDİ
-import globalReducer from "./global/globalSlice"; // DÜZELDİ
+// Default exports
+import authReducer from "./auth/authSlice";
+import currencyReducer from "./currency/currencySlice";
+import globalReducer from "./global/globalSlice";
 
-// Takım arkadaşlarının yazdığı kısımlar (Onlar export default kullanmadıysa {} kalabilir)
-// Ancak genelde Redux slice'ları default export edilir. Eğer hata alırsan bunları da parantezsiz yap.
+// Named exports
 import { transactionsReducer } from "./transactions/slice";
 import { balanceReducer } from "./balance/slice";
+import { financeReducer } from "./finance/financeSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -34,6 +34,7 @@ export const store = configureStore({
     currency: currencyReducer,
     transactions: transactionsReducer,
     balance: balanceReducer,
+    finance: financeReducer, // ✅ EKLENDİ
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
