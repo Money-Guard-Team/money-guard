@@ -1,21 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+// Senin operasyon dosyandaki tüm fonksiyonları buraya import ediyoruz
 import { register, logIn, logOut, refreshUser } from "./authOperations";
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { username: null, email: null }, // Senin kodunda 'username' geçiyor
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  error: null,
+  error: null, // Hata yönetimi için ekledim
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  // Reducer'lar artık otomatik değil, extraReducers kullanacağız
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      // REGISTER
+      // --- REGISTER ---
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
@@ -25,33 +26,41 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.error = action.payload;
       })
-      // LOGIN
+
+      // --- LOGIN ---
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.error = null;
       })
-      // LOGOUT
+      .addCase(logIn.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+
+      // --- LOGOUT ---
       .addCase(logOut.fulfilled, (state) => {
-        state.user = { name: null, email: null };
+        state.user = { username: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
         state.error = null;
       })
-      // REFRESH USER
+
+      // --- REFRESH USER (Sayfa Yenilenince) ---
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload; // Genelde API sadece user döner
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+        // Token geçersizse çıkış yapmış sayabiliriz
+        state.token = null;
       });
   },
 });
 
-export const authReducer = authSlice.reducer;
+export default authSlice.reducer;

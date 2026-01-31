@@ -11,15 +11,16 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// Slice Importları (Takımın yazdığı tüm parçalar)
-import { authReducer } from "./auth/authSlice";
-import { globalReducer } from "./global/globalSlice"; // YENİ EKLENDİ
-import { currencyReducer } from "./currency/currencySlice"; // YENİ EKLENDİ
-import { transactionsReducer } from './transactions/slice';
-import { balanceReducer } from './balance/slice';
+// DİKKAT: Default export olanlarda süslü parantez {} kullanılmaz!
+import authReducer from "./auth/authSlice"; // DÜZELDİ
+import currencyReducer from "./currency/currencySlice"; // DÜZELDİ
+import globalReducer from "./global/globalSlice"; // DÜZELDİ
 
+// Takım arkadaşlarının yazdığı kısımlar (Onlar export default kullanmadıysa {} kalabilir)
+// Ancak genelde Redux slice'ları default export edilir. Eğer hata alırsan bunları da parantezsiz yap.
+import { transactionsReducer } from "./transactions/slice";
+import { balanceReducer } from "./balance/slice";
 
-// Auth için Persist Ayarı (Token'ı hafızada tutmak için)
 const authPersistConfig = {
   key: "auth",
   storage,
@@ -29,8 +30,8 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    global: globalReducer, // EKLENDİ
-    currency: currencyReducer, // EKLENDİ
+    global: globalReducer,
+    currency: currencyReducer,
     transactions: transactionsReducer,
     balance: balanceReducer,
   },
