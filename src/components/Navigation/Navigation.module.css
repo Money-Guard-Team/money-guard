@@ -1,0 +1,50 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.link,
+.active {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: white;
+}
+
+.link {
+  background: transparent;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+/* Mobil için Currency linki gizle/göster */
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobileOnly {
+    display: flex;
+  }
+}
