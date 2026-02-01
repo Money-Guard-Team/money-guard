@@ -1,9 +1,71 @@
 .wrapper {
-    min-height: 100vh;
-    background: linear-gradient(180deg, #1b163f 0%, #120e2b 100%);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(
+    167deg,
+    rgba(47, 21, 176, 0.73) 0%,
+    rgba(24, 150, 221, 0.73) 110.76%
+  );
 }
 
 .content {
-    display: flex;
-    height: calc(100vh - 64px);
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Sidebar (Sol Alan) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Ana İçerik (Sağ Alan) */
+.main {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+}
+
+/* Tablet (768px - 1279px) */
+@media (max-width: 1279px) {
+  .content {
+    padding: 15px;
+  }
+
+  .sidebar {
+    max-width: 280px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+}
+
+/* Mobil (320px - 767px) */
+@media (max-width: 767px) {
+  .content {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .sidebar {
+    max-width: 100%;
+    /* Mobilde Currency gizle, Navigation'da göster */
+  }
+
+  .main {
+    padding: 15px;
+  }
 }

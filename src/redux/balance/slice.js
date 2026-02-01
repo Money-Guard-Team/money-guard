@@ -10,11 +10,16 @@ const initialState = {
 const balanceSlice = createSlice({
   name: "balance",
   initialState,
-  reducers: {}, 
+  reducers: {
+    updateBalance: (state, action) => {
+      state.amount = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getBalance.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getBalance.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -27,4 +32,6 @@ const balanceSlice = createSlice({
   },
 });
 
-export default balanceSlice.reducer;
+// Named export, store.js ile uyumlu
+export const { updateBalance } = balanceSlice.actions;
+export const balanceReducer = balanceSlice.reducer;

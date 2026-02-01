@@ -8,8 +8,8 @@ import {
 } from "./operations.js";
 
 const initialState = {
-  items: [],       
-  categories: [],  
+  items: [],
+  categories: [],
   isLoading: false,
   error: null,
 };
@@ -43,7 +43,7 @@ const transactionsSlice = createSlice({
 
       .addCase(editTransaction.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          (item) => item.id === action.payload.id
+          (item) => item.id === action.payload.id,
         );
         if (index !== -1) {
           state.items[index] = action.payload;

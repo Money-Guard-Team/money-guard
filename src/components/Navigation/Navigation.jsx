@@ -1,25 +1,37 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <aside className={styles.sidebar}>
-      <nav className={styles.nav}>
-        <NavLink
-          to="/home"
-          className={({ isActive }) => (isActive ? styles.active : styles.link)}
-        >
-          Home
-        </NavLink>
+    <nav className={styles.nav}>
+      <NavLink
+        to="/dashboard/home"
+        className={({ isActive }) => (isActive ? styles.active : styles.link)}
+      >
+        <span className={styles.icon}>🏠</span>
+        Home
+      </NavLink>
 
-        <NavLink
-          to="/statistics"
-          className={({ isActive }) => (isActive ? styles.active : styles.link)}
-        >
-          Statistics
-        </NavLink>
-      </nav>
-    </aside>
+      <NavLink
+        to="/dashboard/statistics"
+        className={({ isActive }) => (isActive ? styles.active : styles.link)}
+      >
+        <span className={styles.icon}>📊</span>
+        Statistics
+      </NavLink>
+
+      {/* Sadece Mobilde görünür */}
+      <NavLink
+        to="/dashboard/currency"
+        className={({ isActive }) =>
+          `${isActive ? styles.active : styles.link} ${styles.mobileOnly}`
+        }
+      >
+        <span className={styles.icon}>💱</span>
+        Currency
+      </NavLink>
+    </nav>
   );
 };
 
