@@ -1,4 +1,3 @@
-/*BASE – MOBILE FIRST*/
 
 .wrapper {
     min-height: 100vh;
@@ -19,7 +18,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-/*  LOGO*/
 
 .logo {
     display: flex;
@@ -40,7 +38,6 @@
     font-weight: 500;
 }
 
-/* FORM */
 
 .form {
     display: flex;
@@ -77,7 +74,6 @@
     outline: none;
 }
 
-/* focus olunca arka plan beyaz olmasın */
 .input {
     background-color: transparent !important;
 }
@@ -111,7 +107,7 @@
     color: #ff6b6b;
 }
 
-/*  BUTTONS*/
+
 
 .loginBtn {
     margin-top: 6px;
@@ -137,7 +133,7 @@
     cursor: pointer;
 }
 
-/*TABLET ≥ 768px*/
+
 
 @media (min-width: 768px) {
     .wrapper {
@@ -165,7 +161,8 @@
     }
 }
 
-/* DESKTOP ≥ 1280px*/
+
+
 
 @media (min-width: 1280px) {
     .card {
