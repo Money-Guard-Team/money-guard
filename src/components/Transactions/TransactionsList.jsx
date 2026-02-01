@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import TransactionsItem from "./TransactionsItem";
-import ModalEditTransaction from "../Modals/ModalEditTransaction";
+import ModalEditTransaction from "./ModalEditTransaction";
 import styles from "./TransactionsList.module.css";
 
 const TransactionsList = () => {
-  const transactions = useSelector((state) => state.transactions.list);
+  const transactions = useSelector((state) => state.transactions.items);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   const handleEdit = (transaction) => setSelectedTransaction(transaction);

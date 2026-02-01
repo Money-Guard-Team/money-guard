@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTransactions } from "../../redux/transactions/operations";
 import { getBalance } from "../../redux/balance/operations";
-import { selectBalance } from "../../redux/balance/selectors";
+import { fetchTransactions } from "../../redux/transactions/operations";
 import { selectTransactions } from "../../redux/transactions/slice";
 import TransactionsList from "../Transactions/TransactionsList";
 import ButtonAddTransactions from "../Transactions/ButtonAddTransaction";
@@ -10,13 +9,13 @@ import styles from "./HomeTab.module.css";
 
 const HomeTab = () => {
   const dispatch = useDispatch();
-  const balance = useSelector(selectBalance);
+  const balance = useSelector((state) => state.balance.amount);
   const transactions = useSelector(selectTransactions);
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth?.user);
 
   useEffect(() => {
-    dispatch(getTransactions());
     dispatch(getBalance());
+    dispatch(fetchTransactions());
   }, [dispatch]);
 
   return (

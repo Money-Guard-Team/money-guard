@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ModalAddTransaction from "./ModalAddTransaction";
-import styles from "./ButtonAddTransactions.module.css";
+import styles from "./ButtonAddTransaction.module.css";
 
 const ButtonAddTransactions = () => {
   const [isOpen, setIsOpen] = useState(false);

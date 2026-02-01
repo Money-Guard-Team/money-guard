@@ -1,5 +1,6 @@
-import Header from "../../components/Header/Header.jsx";
-import Navigation from "../../components/Navigation/Navigation.jsx";
+import React from "react";
+import Header from "../../components/Header/Header";
+import Navigation from "../../components/Navigation/Navigation";
 import { Outlet } from "react-router-dom";
 import styles from "./DashboardPage.module.css";
 
@@ -10,7 +11,7 @@ const DashboardPage = () => {
       <div className={styles.content}>
         <Navigation />
         <main className={styles.main}>
-          <Outlet />
+          <Outlet /> 
         </main>
       </div>
     </div>
