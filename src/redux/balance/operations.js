@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "/api/balance";
+const API_URL = import.meta.env.VITE_API_URL || "/api/balance";
 
 export const getBalance = createAsyncThunk(
   "balance/getBalance",
