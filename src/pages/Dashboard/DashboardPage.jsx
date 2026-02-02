@@ -3,24 +3,39 @@ import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import Currency from "../../components/Currency/Currency";
-import Balance from "../../components/Balance/Balance.jsx";
+import Balance from "../../components/Balance/Balance";
+import ButtonAddTransactions from "../../components/ButtonAddTransactions/ButtonAddTransactions";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
+import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
 import styles from "./DashboardPage.module.css";
 
 const DashboardPage = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.dashboardContainer}>
       <Header />
-      <div className={styles.content}>
-        <aside className={styles.sidebar}>
-          <Navigation />
-          <Balance />
-          <Currency />
+      <div className={styles.mainLayout}>
+        <aside className={styles.sideBar}>
+          <div className={styles.navBalance}>
+            <Navigation />
+            <div className={styles.balanceWrapper}>
+              <Balance />
+            </div>
+          </div>
+          <div className={styles.currencyWrapper}>
+            <Currency />
+          </div>
         </aside>
 
-        <main className={styles.main}>
+        <div className={styles.divider}></div>
+
+        <main className={styles.mainContent}>
           <Outlet /> 
+          <ButtonAddTransactions />
         </main>
       </div>
+
+      <ModalAddTransaction />
+      <ModalEditTransaction />
     </div>
   );
 };

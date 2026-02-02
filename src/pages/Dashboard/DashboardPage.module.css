@@ -1,71 +1,47 @@
-.wrapper {
+.dashboardContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(
-    167deg,
-    rgba(47, 21, 176, 0.73) 0%,
-    rgba(24, 150, 221, 0.73) 110.76%
-  );
 }
 
-.content {
-  display: flex;
-  flex: 1;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Sidebar (Sol Alan) */
-.sidebar {
+.mainLayout {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   width: 100%;
-  max-width: 320px;
 }
 
-/* Ana İçerik (Sağ Alan) */
-.main {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
-  padding: 30px;
-  backdrop-filter: blur(10px);
-  overflow-y: auto;
+.sideBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
 }
 
-/* Tablet (768px - 1279px) */
-@media (max-width: 1279px) {
-  .content {
-    padding: 15px;
-  }
+.balanceWrapper { display: none; }
+.currencyWrapper { display: none; }
+.divider { display: none; }
 
-  .sidebar {
-    max-width: 280px;
+@media (min-width: 768px) {
+  .mainLayout { padding: 0 32px; }
+  .sideBar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 0 20px 0;
   }
-
-  .main {
-    padding: 20px;
-  }
+  .navBalance { display: flex; flex-direction: column; gap: 28px; }
+  .balanceWrapper { display: block; }
+  .currencyWrapper { display: block; width: 336px; }
 }
 
-/* Mobil (320px - 767px) */
-@media (max-width: 767px) {
-  .content {
-    flex-direction: column;
-    padding: 10px;
+@media (min-width: 1280px) {
+  .mainLayout { flex-direction: row; padding: 0 16px; justify-content: center; }
+  .sideBar { width: 480px; padding: 40px 69px 0 0; }
+  .divider {
+    display: block;
+    width: 1px;
+    height: calc(100vh - 80px);
+    background: rgba(255, 255, 255, 0.25);
+    margin-right: 69px;
   }
-
-  .sidebar {
-    max-width: 100%;
-    /* Mobilde Currency gizle, Navigation'da göster */
-  }
-
-  .main {
-    padding: 15px;
-  }
+  .mainContent { width: 715px; padding: 46px 0 0 0; }
 }

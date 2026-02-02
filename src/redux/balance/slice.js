@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getBalance } from "./operations";
+import { addTransaction, editTransaction } from "../transactions/operations";
 
 const initialState = {
   amount: 0,
@@ -28,10 +29,23 @@ const balanceSlice = createSlice({
       .addCase(getBalance.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      .addCase(addTransaction.fulfilled, (state, action) => {
+        if (action.payload.balanceAfter !== undefined) {
+          state.amount = action.payload.balanceAfter;
+        }
+      })
+
+  
+      .addCase(editTransaction.fulfilled, (state, action) => {
+        if (action.payload.balanceAfter !== undefined) {
+          state.amount = action.payload.balanceAfter;
+        }
       });
+      
   },
 });
 
-// Named export, store.js ile uyumlu
 export const { updateBalance } = balanceSlice.actions;
 export const balanceReducer = balanceSlice.reducer;

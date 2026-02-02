@@ -11,7 +11,7 @@
   font-size: 24px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   cursor: pointer;
-  transition: background-color 0.3s ease; /
+  transition: background-color 0.3s ease; 
 }
 
 .addButton:hover {

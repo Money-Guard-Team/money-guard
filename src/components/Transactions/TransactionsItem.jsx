@@ -1,10 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTransaction } from "../../redux/transactions/operations";
+import { getBalance } from "../../redux/balance/operations"; 
 import styles from "./TransactionsItem.module.css";
 
 const TransactionsItem = ({ transaction, onEdit }) => {
   const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteTransaction(transaction.id))
+      .unwrap()
+      .then(() => {
+      
+        dispatch(getBalance());
+      })
+      .catch((error) => {
+        console.error("Silme işlemi başarısız:", error);
+      });
+  };
 
   return (
     <div
@@ -25,7 +38,7 @@ const TransactionsItem = ({ transaction, onEdit }) => {
           Edit
         </button>
         <button
-          onClick={() => dispatch(deleteTransaction(transaction.id))}
+          onClick={handleDelete} // 
           className={styles.buttonDelete}
         >
           Delete
