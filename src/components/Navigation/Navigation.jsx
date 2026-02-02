@@ -6,31 +6,42 @@ import styles from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.navbar}>
+      {/* HOME */}
       <NavLink
         to="/dashboard/home"
-        className={({ isActive }) => (isActive ? styles.active : styles.link)}
+        className={({ isActive }) =>
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkHome}`
+        }
       >
-        <div className={styles.iconWrapper}><MdHome /></div>
-        <span className={styles.text}>Home</span>
+        <svg className={styles.icon}>
+          <use href="#icon-home" />
+        </svg>
+        <span className={styles.iconText}>Home</span>
       </NavLink>
 
+      {/* STATISTICS */}
       <NavLink
         to="/dashboard/statistics"
-        className={({ isActive }) => (isActive ? styles.active : styles.link)}
+        className={({ isActive }) =>
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkStatistics}`
+        }
       >
-        <div className={styles.iconWrapper}><MdTimeline /></div>
-        <span className={styles.text}>Statistics</span>
+        <svg className={styles.icon}>
+          <use href="#icon-statisticsBg" />
+          <use href="#icon-statisticsIn" width={16} x="4" y="1" />
+        </svg>
+        <span className={styles.iconText}>Statistics</span>
       </NavLink>
 
+      {/* CURRENCY (mobile only) */}
       <NavLink
         to="/dashboard/currency"
         className={({ isActive }) =>
-          `${isActive ? styles.active : styles.link} ${styles.mobileOnly}`
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.mobileOnly}`
         }
       >
-        <div className={styles.iconWrapper}><FaDollarSign /></div>
-        <span className={styles.text}>Currency</span>
+        <span className={styles.iconText}>💱 Currency</span>
       </NavLink>
     </nav>
   );

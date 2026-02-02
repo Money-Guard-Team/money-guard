@@ -30,6 +30,19 @@ const DashboardPage = () => {
           </div>
         </aside>
 
+        {/* Divider */}
+        <div className={styles.divider}></div>
+
+        {/* Sağ İçerik Alanı */}
+        <main className={styles.main}>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/dashboard/home" replace />}
+            />
+            {/* <Route path="home" element={<HomeTab />} /> */}
+            <Route path="statistics" element={<StatisticsDashboard />} />
+          </Routes>
         <div className={styles.divider}></div>
 
         <main className={styles.mainContent}>

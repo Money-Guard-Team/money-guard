@@ -1,11 +1,60 @@
 .dashboardContainer {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
   min-height: 100vh;
 }
 
 .mainLayout {
   display: flex;
+  flex: 1;
+}
+
+/* Sol Sidebar */
+.sidebar {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(60deg, #4a2f8a 0%, #3b2270 50%, #2a1652 80%);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Sağ Main Content */
+.main {
+  flex: 1;
+  padding: 30px;
+  background: linear-gradient(225deg,
+      #0c081a 0%,
+      #1c1238 35%,
+      #2b1b55 65%,
+      #3a2a6f 100%);
+  overflow-y: auto;
+  backdrop-filter: blur(8px);
+}
+
+/* Tablet (768px - 1279px) */
+@media (max-width: 1279px) {
+  .content {
+    padding: 15px;
+  }
+
+  .sidebar {
+    max-width: 240px;
+  }
+
+  .main {
+    padding: 20px;
   flex-direction: column;
   width: 100%;
 }
@@ -33,6 +82,25 @@
   .currencyWrapper { display: block; width: 336px; }
 }
 
+/* Mobil (320px - 767px) */
+@media (max-width: 767px) {
+  .content {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .sidebar {
+    max-width: 100%;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .main {
+    margin: 10px 0;
+    padding: 15px;
+  }
 @media (min-width: 1280px) {
   .mainLayout { flex-direction: row; padding: 0 16px; justify-content: center; }
   .sideBar { width: 480px; padding: 40px 69px 0 0; }

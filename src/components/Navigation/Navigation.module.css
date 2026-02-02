@@ -1,5 +1,60 @@
-.nav {
+/* Sol Navbar */
+.navbar {
+  width: 200px;
+  padding: 20px;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Icon text */
+.iconText {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+}
+
+/* SVG icon size */
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.navLinkHome svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.navLinkHome.active svg {
+  color: rgba(115, 74, 239, 1);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.navLinkStatistics svg use:first-child {
+  color: #ffffff66;
+  opacity: 0.6;
+}
+
+.navLinkStatistics.active svg use:first-child {
+  color: rgba(115, 74, 239, 1);
   justify-content: center;
   gap: 32px;
   padding: 12px 0;
