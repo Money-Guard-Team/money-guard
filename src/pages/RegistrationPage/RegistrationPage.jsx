@@ -179,7 +179,6 @@ export default function RegisterPage() {
             );
           }}
         </Formik>
-        // test
       </div>
     </div>
   );
