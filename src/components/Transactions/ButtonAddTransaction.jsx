@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalAddTransaction from "./ModalAddTransaction";
 import styles from "./ButtonAddTransaction.module.css";
 
-const ButtonAddTransactions = () => {
+const ButtonAddTransaction = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
@@ -23,4 +23,4 @@ const ButtonAddTransactions = () => {
   );
 };
 
-export default ButtonAddTransactions;
+export default ButtonAddTransaction;

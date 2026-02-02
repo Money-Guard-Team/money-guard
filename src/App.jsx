@@ -7,7 +7,7 @@ import Loader from "./components/Loader/Loader";
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
 const DashboardPage = lazy(() => import("./pages/Dashboard/DashboardPage"));
-const HomeTab = lazy(() => import("./components/HomeTab/HomeTab"));
+const HomeTab = lazy(() => import("./components/HomeTab/HomeTab.jsx"));
 
 function App() {
   const dispatch = useDispatch();

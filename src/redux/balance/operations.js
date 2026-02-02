@@ -8,7 +8,6 @@ export const getBalance = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(API_URL);
-      // backend cevabına göre alanı seç
       return data.balance ?? data.totalBalance ?? 0;
     } catch (error) {
       return thunkAPI.rejectWithValue(
