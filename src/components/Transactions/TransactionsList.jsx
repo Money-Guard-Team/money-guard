@@ -16,9 +16,9 @@ const TransactionsList = () => {
       {transactions.length === 0 ? (
         <p className={styles.placeholder}>No transactions yet</p>
       ) : (
-        transactions.map((tx) => (
+        transactions.map((tx, index) => (
           <TransactionsItem
-            key={tx.id}
+            key={`${tx.id}-${index}`}
             transaction={tx}
             onEdit={handleEdit}
           />
