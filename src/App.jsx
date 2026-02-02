@@ -5,12 +5,13 @@ import { refreshUser } from "./redux/auth/authOperations";
 import Loader from "./components/Loader/Loader";
 
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
-const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"));
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
 const DashboardPage = lazy(() => import("./pages/Dashboard/DashboardPage"));
+const HomeTab = lazy(() => import("./components/HomeTab/HomeTab"));
 
 function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector((state) => state.auth?.isRefreshing);
+  const { isRefreshing, isLoggedIn } = useSelector((state) => state.auth || {});
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -21,12 +22,15 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/dashboard" />} />
+        <Route path="/register" element={!isLoggedIn ? <RegistrationPage /> : <Navigate to="/dashboard" />} />
+        
+        <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />}>
+          <Route index element={<HomeTab />} /> 
+          <Route path="home" element={<HomeTab />} />
+        </Route>
 
-        <Route path="/dashboard/*" element={<DashboardPage />} />
-
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Suspense>
