@@ -1,15 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { logIn } from "../../redux/auth/authOperations"; 
+import { logIn } from "../../redux/auth/authOperations";
 import css from "./LoginPage.module.css";
 import { theme } from "../../styles/theme";
 import { FiMail, FiLock } from "react-icons/fi";
-import logo from "../../image/favicon.svg"
-
-
-
+import logo from "../../image/favicon.svg";
 
 // Form doğrulama şeması
 const LoginSchema = Yup.object().shape({
@@ -17,32 +15,28 @@ const LoginSchema = Yup.object().shape({
     .email("Invalid email address")
     .required("Email is required"),
   password: Yup.string()
-    .min(7, "Password must be at least 7 characters")
+    .min(6, "Password must be at least 6 characters")
+    .max(12, "Password must be at most 12 characters")
     .required("Password is required"),
 });
 
 export default function LoginPage() {
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (values, actions) => {
-    // Redux Thunk operasyonunu çağırıyoruz
-    dispatch(logIn(values))
-      .unwrap()
-      .then(() => {
-        console.log("Login successful");
-      })
-      .catch(() => {
-        alert("Login failed. Please check your credentials.");
-      });
-    
+  const handleSubmit = async (values, actions) => {
+    try {
+      await dispatch(logIn(values)).unwrap();
+      navigate("/dashboard/home");
+    } catch (error) {
+      alert("Login failed. Please check your credentials.");
+      console.log(error);
+    }
     actions.resetForm();
   };
 
   return (
-    <div
-      className={css.wrapper}
-      style={{ background: theme.colors.primary }}
-    >
+    <div className={css.wrapper} style={{ background: theme.colors.primary }}>
       <div className={css.card}>
         <div className={css.logo}>
           <img src={logo} alt="Money Guard logo" className={css.logoIcon} />
@@ -52,7 +46,7 @@ export default function LoginPage() {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={LoginSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={handleSubmit}
         >
           <Form className={css.form}>
             {/* EMAIL */}
@@ -64,7 +58,11 @@ export default function LoginPage() {
                 placeholder="E-mail"
                 className={css.input}
               />
-              <ErrorMessage name="email" component="span" className={css.error} />
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={css.error}
+              />
             </div>
 
             {/* PASSWORD */}
@@ -87,9 +85,9 @@ export default function LoginPage() {
               LOG IN
             </button>
 
-            <button type="button" className={css.registerBtn}>
+            <Link to="/register" className={css.registerBtn}>
               REGISTER
-            </button>
+            </Link>
           </Form>
         </Formik>
       </div>

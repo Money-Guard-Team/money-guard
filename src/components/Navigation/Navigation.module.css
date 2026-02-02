@@ -1,38 +1,69 @@
-.sidebar {
-    width: 260px;
-    padding: 24px 16px;
-
-    background: linear-gradient(180deg, #3a2b7c 0%, #2a1f5a 100%);
-    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.05);
-}
-
-.nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+/* Sol Navbar */
+.navbar {
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .link {
-    padding: 12px 16px;
-    border-radius: 8px;
-
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 15px;
-
-    transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+  text-decoration: none;
 }
 
 .link:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.active {
-    padding: 12px 16px;
-    border-radius: 8px;
+/* Icon text */
+.iconText {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+}
 
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    font-weight: 600;
+/* SVG icon size */
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.navLinkHome svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.navLinkHome.active svg {
+  color: rgba(115, 74, 239, 1);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.navLinkStatistics svg use:first-child {
+  color: #ffffff66;
+  opacity: 0.6;
+}
+
+.navLinkStatistics.active svg use:first-child {
+  color: rgba(115, 74, 239, 1);
+}
+
+/* Mobil için Currency linki gizle/göster */
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobileOnly {
+    display: flex;
+  }
 }

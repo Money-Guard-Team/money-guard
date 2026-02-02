@@ -9,7 +9,7 @@ const LoaderOverlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Arka planı biraz karart */
+  background-color: rgba(0, 0, 0, 0.5); /* Arka planı karart */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,9 @@ const LoaderOverlay = styled.div`
 `;
 
 const Loader = () => {
-  const isLoading = useSelector((state) => state.global.isLoading);
+  // Global state'ten loading durumunu çekiyoruz
+  const isLoading = useSelector((state) => state.global?.isLoading);
+  // Not: state.global yoksa hata vermemesi için ?. ekledim
 
   if (!isLoading) return null;
 
@@ -28,9 +30,8 @@ const Loader = () => {
         height="80"
         width="80"
         ariaLabel="blocks-loading"
-        wrapperStyle={{}}
         wrapperClass="blocks-wrapper"
-        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849687"]}
       />
     </LoaderOverlay>
   );

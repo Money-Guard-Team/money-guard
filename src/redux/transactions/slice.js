@@ -1,47 +1,66 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getTransactions, addTransaction,editTransaction, deleteTransaction } from './operations';
+import { createSlice } from "@reduxjs/toolkit";
+// Buradaki importların doğru çalışması için üstteki dosyanın hatasız olması şart
+import {
+  fetchTransactions,
+  addTransaction,
+  deleteTransaction,
+  editTransaction,
+  fetchTransactionCategories,
+} from "./operations.js";
 
 const initialState = {
-    list: [],
-    isLoading: false,
-    error: null,
+  items: [],
+  categories: [],
+  isLoading: false,
+  error: null,
 };
 
 const transactionsSlice = createSlice({
-    name: 'transactions',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-        .addCase(getTransactions.pending, (state) => {
-            state.isLoading = true;
-            state.error = null;
-        })
-        .addCase(getTransactions.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.list = action.payload;
-        })
-        .addCase(getTransactions.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        })
-        .addCase(addTransaction.fullfilled, (state, action) => {
-            state.list.push(action.payload);
-        })
-        .addCase(editTransaction.fulfilled, (state, action) => {
-            const idx = state.list.findIndex(
-                (transaction) => transaction.id === action.payload.id
-            );
-            if (idx !== -1) {
-                state.list[idx] = action.payload;
-            }
-        })
-        .addCase(deleteTransaction.fulfilled, (state, action) => {
-            state.list = state.list.filter(
-                (transaction) => transaction.id !== action.payload
-            );
-        });
-    },
+  name: "transactions",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      // --- Fetch Transactions ---
+      .addCase(fetchTransactions.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchTransactions.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchTransactions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // --- Add Transaction ---
+      .addCase(addTransaction.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+      })
+
+      // --- Delete Transaction ---
+      .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.items = state.items.filter((item) => item.id !== action.payload);
+      })
+
+      // --- Edit Transaction ---
+      .addCase(editTransaction.fulfilled, (state, action) => {
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload.id,
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+
+      // --- Categories ---
+      .addCase(fetchTransactionCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
+      });
+  },
 });
 
+// Store.js uyumu için NAMED EXPORT yapıyoruz
 export const transactionsReducer = transactionsSlice.reducer;

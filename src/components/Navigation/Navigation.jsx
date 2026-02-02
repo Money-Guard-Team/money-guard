@@ -1,25 +1,47 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <aside className={styles.sidebar}>
-      <nav className={styles.nav}>
-        <NavLink
-          to="/home"
-          className={({ isActive }) => (isActive ? styles.active : styles.link)}
-        >
-          Home
-        </NavLink>
+    <nav className={styles.navbar}>
+      {/* HOME */}
+      <NavLink
+        to="/dashboard/home"
+        className={({ isActive }) =>
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkHome}`
+        }
+      >
+        <svg className={styles.icon}>
+          <use href="#icon-home" />
+        </svg>
+        <span className={styles.iconText}>Home</span>
+      </NavLink>
 
-        <NavLink
-          to="/statistics"
-          className={({ isActive }) => (isActive ? styles.active : styles.link)}
-        >
-          Statistics
-        </NavLink>
-      </nav>
-    </aside>
+      {/* STATISTICS */}
+      <NavLink
+        to="/dashboard/statistics"
+        className={({ isActive }) =>
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkStatistics}`
+        }
+      >
+        <svg className={styles.icon}>
+          <use href="#icon-statisticsBg" />
+          <use href="#icon-statisticsIn" width={16} x="4" y="1" />
+        </svg>
+        <span className={styles.iconText}>Statistics</span>
+      </NavLink>
+
+      {/* CURRENCY (mobile only) */}
+      <NavLink
+        to="/dashboard/currency"
+        className={({ isActive }) =>
+          `${styles.link} ${isActive ? styles.active : ""} ${styles.mobileOnly}`
+        }
+      >
+        <span className={styles.iconText}>💱 Currency</span>
+      </NavLink>
+    </nav>
   );
 };
 
