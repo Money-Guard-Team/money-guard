@@ -19,6 +19,7 @@ import globalReducer from "./global/globalSlice";
 // Named exports
 import { transactionsReducer } from "./transactions/slice";
 import { balanceReducer } from "./balance/slice";
+
 import { financeReducer } from "./finance/financeSlice";
 
 const authPersistConfig = {
@@ -34,7 +35,7 @@ export const store = configureStore({
     currency: currencyReducer,
     transactions: transactionsReducer,
     balance: balanceReducer,
-    finance: financeReducer, // ✅ EKLENDİ
+    finance: financeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
