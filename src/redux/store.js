@@ -11,16 +11,13 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// Default exports
+// Reducer'lar
 import authReducer from "./auth/authSlice";
 import currencyReducer from "./currency/currencySlice";
 import globalReducer from "./global/globalSlice";
-
-// Named exports
 import { transactionsReducer } from "./transactions/slice";
-import { balanceReducer } from "./balance/slice";
-
-import { financeReducer } from "./finance/financeSlice";
+import { balanceReducer } from "./balance/slice"; 
+import { financeReducer } from "./finance/financeSlice"; 
 
 const authPersistConfig = {
   key: "auth",

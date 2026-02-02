@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { MdHome, MdTimeline } from "react-icons/md";
+import { FaDollarSign } from "react-icons/fa";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -9,27 +11,26 @@ const Navigation = () => {
         to="/dashboard/home"
         className={({ isActive }) => (isActive ? styles.active : styles.link)}
       >
-        <span className={styles.icon}>🏠</span>
-        Home
+        <div className={styles.iconWrapper}><MdHome /></div>
+        <span className={styles.text}>Home</span>
       </NavLink>
 
       <NavLink
         to="/dashboard/statistics"
         className={({ isActive }) => (isActive ? styles.active : styles.link)}
       >
-        <span className={styles.icon}>📊</span>
-        Statistics
+        <div className={styles.iconWrapper}><MdTimeline /></div>
+        <span className={styles.text}>Statistics</span>
       </NavLink>
 
-      {/* Sadece Mobilde görünür */}
       <NavLink
         to="/dashboard/currency"
         className={({ isActive }) =>
           `${isActive ? styles.active : styles.link} ${styles.mobileOnly}`
         }
       >
-        <span className={styles.icon}>💱</span>
-        Currency
+        <div className={styles.iconWrapper}><FaDollarSign /></div>
+        <span className={styles.text}>Currency</span>
       </NavLink>
     </nav>
   );

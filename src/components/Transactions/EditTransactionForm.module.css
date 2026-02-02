@@ -1,0 +1,39 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.buttonEdit {
+  background-color: #7E57C2; 
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.buttonEdit:hover {
+  background-color: #5e3fa0;
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    gap: 12px;
+  }
+  .input {
+    font-size: 12px;
+  }
+}
