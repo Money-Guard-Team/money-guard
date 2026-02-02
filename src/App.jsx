@@ -7,7 +7,7 @@ import Loader from "./components/Loader/Loader";
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
 const DashboardPage = lazy(() => import("./pages/Dashboard/DashboardPage"));
-const HomeTab = lazy(() => import("./components/HomeTab/HomeTab.jsx"));
+const HomeTab = lazy(() => import("./components/HomeTab/HomeTab")); 
 
 function App() {
   const dispatch = useDispatch();
@@ -24,9 +24,9 @@ function App() {
       <Routes>
         <Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={!isLoggedIn ? <RegistrationPage /> : <Navigate to="/dashboard" />} />
-        
+
         <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />}>
-          <Route index element={<HomeTab />} /> 
+          <Route index element={<HomeTab />} />
           <Route path="home" element={<HomeTab />} />
         </Route>
 

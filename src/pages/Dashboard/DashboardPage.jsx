@@ -1,13 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+
 import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import Currency from "../../components/Currency/Currency";
 import Balance from "../../components/Balance/Balance";
-import ButtonAddTransactions from "../../components/ButtonAddTransactions/ButtonAddTransactions";
-import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
-import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
+
+import ButtonAddTransaction from "../../components/Transactions/ButtonAddTransaction";
+import ModalAddTransaction from "../../components/Transactions/ModalAddTransaction";
+import ModalEditTransaction from "../../components/Transactions/ModalEditTransaction";
+
 import styles from "./DashboardPage.module.css";
+
 
 const DashboardPage = () => {
   return (
@@ -30,7 +34,7 @@ const DashboardPage = () => {
 
         <main className={styles.mainContent}>
           <Outlet /> 
-          <ButtonAddTransactions />
+          <ButtonAddTransaction />
         </main>
       </div>
 

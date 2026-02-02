@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react"; 
 import { useSelector } from "react-redux";
-import TransactionItem from "../TransactionItem/TransactionItem";
+import TransactionItem from "../Transactions/TransactionItem";
 import styles from "./TransactionList.module.css";
 import useMedia from "../../hooks/useMedia";
 import { selectTransactions } from "../../redux/transactions/selectors";
