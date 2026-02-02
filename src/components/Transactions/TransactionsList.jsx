@@ -5,7 +5,7 @@ import ModalEditTransaction from "./ModalEditTransaction";
 import styles from "./TransactionsList.module.css";
 
 const TransactionsList = () => {
-  const transactions = useSelector((state) => state.transactions.items);
+  const transactions = useSelector((state) => state.transactions?.items || []);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   const handleEdit = (transaction) => setSelectedTransaction(transaction);
