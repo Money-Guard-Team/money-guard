@@ -1,26 +1,32 @@
 .header {
-    height: 64px;
+    height: 80px;
     padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: linear-gradient(90deg, #2E225F 0%, #2E1746 100%);
+    box-shadow: 0px -3px 2px 0px #0000001A inset;
 
-    background: linear-gradient(90deg, #2c1f55 0%, #1e153f 100%);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-.logo {
+.logoWrapper {
     display: flex;
+    flex-direction: column;
+    /* icon üstte, yazı altta */
     align-items: center;
-    gap: 10px;
-
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
+    gap: 4px;
 }
 
 .logoIcon {
-    color: #ffb627;
+    width: 32px;
+    height: 32px;
+}
+
+.logoText {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
 }
 
 .userBlock {
@@ -32,7 +38,14 @@
 }
 
 .userName {
-    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    opacity: 0.6;
+
 }
 
 .divider {
@@ -47,8 +60,28 @@
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     font-size: 14px;
+    height: 18px;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.exitBtn svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
 }
 
 .exitBtn:hover {
     color: #ffb627;
+}
+
+.exitText {
+    opacity: 0.6;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
 }

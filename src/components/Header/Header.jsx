@@ -1,11 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import LogoutModal from "./LogoutModal";
 import styles from "./Header.module.css";
-import React from "react";
 
 const Header = () => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth?.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Email'den kullanıcı adı oluştur (@'den önceki kısım)
@@ -14,26 +12,37 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.logo}>
-          <span className={styles.logoIcon}>◆</span>
-          Money Guard
+        <div className={styles.logoWrapper}>
+          <svg className={styles.logoIcon}>
+            <use href="#icon-logo" />
+          </svg>
+          <span className={styles.logoText}>Money Guard</span>
         </div>
 
         <div className={styles.userBlock}>
           <span className={styles.userName}>{username}</span>
-          <span className={styles.divider} />
+          <svg className={styles.divider}>
+            <use href="#icon-sidebarDivider"></use>
+          </svg>
           <button
             className={styles.exitBtn}
             onClick={() => setIsModalOpen(true)}
             type="button"
           >
-            Exit
+            <svg>
+              <use href="#icon-exit"></use>
+            </svg>
+            <span className={styles.exitText}>Exit</span>
           </button>
         </div>
       </header>
 
-      {isModalOpen && <LogoutModal onClose={() => setIsModalOpen(false)} />}
-    </>
+      <div className={styles.userBlock}>
+        <span className={styles.userName}>{user?.name || "Name"}</span>
+        <span className={styles.divider} />
+        <button className={styles.exitBtn}>Exit</button>
+      </div>
+    </header>
   );
 };
 

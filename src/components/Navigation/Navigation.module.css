@@ -1,50 +1,114 @@
-.nav {
+/* Sol Navbar */
+.navbar {
+  width: 200px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.link,
-.active {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.3s;
-  color: white;
+  gap: 16px;
 }
 
 .link {
-  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+  text-decoration: none;
 }
 
 .link:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.active {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Icon text */
+.iconText {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
 }
 
+/* SVG icon size */
 .icon {
-  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
-/* Mobil için Currency linki gizle/göster */
+.navLinkHome svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.navLinkHome.active svg {
+  color: rgba(115, 74, 239, 1);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.navLinkStatistics svg use:first-child {
+  color: #ffffff66;
+  opacity: 0.6;
+}
+
+.navLinkStatistics.active svg use:first-child {
+  color: rgba(115, 74, 239, 1);
+  justify-content: center;
+  gap: 32px;
+  padding: 12px 0;
+}
+
+.link, .active {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  gap: 20px;
+  transition: font-weight 0.3s ease;
+}
+
+.iconWrapper {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  color: #523b7e;
+  font-size: 18px;
+}
+
+.active .iconWrapper {
+  background: #734aef;
+  color: #fff;
+  filter: drop-shadow(0px 3px 10px rgba(115, 74, 239, 0.5));
+}
+
+.active .text {
+  font-weight: 700;
+}
+
 .mobileOnly {
-  display: none;
+  display: flex; 
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0;
+  }
+
   .mobileOnly {
-    display: flex;
+    display: none; 
+  }
+
+  .text {
+    display: block;
   }
 }

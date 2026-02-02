@@ -23,14 +23,18 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/auth/sign-up", credentials);
-      // Kayıt olduktan sonra token'ı hemen set et
+
       setAuthHeader(res.data.token);
+
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data || error.message
+      );
     }
-  },
+  }
 );
+
 
 /*
  * LOGIN (Giriş Yap)

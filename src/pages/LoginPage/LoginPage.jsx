@@ -4,7 +4,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { logIn } from "../../redux/auth/authOperations";
 import css from "./LoginPage.module.css";
-import { theme } from "../../styles/theme";
 import { FiMail, FiLock } from "react-icons/fi";
 import logo from "../../image/favicon.svg";
 import { useNavigate, Link } from "react-router-dom";
@@ -36,7 +35,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={css.wrapper} style={{ background: theme.colors.primary }}>
+    <div className={css.wrapper}>
       <div className={css.card}>
         <div className={css.logo}>
           <img src={logo} alt="Money Guard logo" className={css.logoIcon} />

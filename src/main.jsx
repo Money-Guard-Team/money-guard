@@ -10,6 +10,12 @@ import { GlobalStyle } from "./styles/GlobalStyles";
 import { theme } from "./styles/theme";
 import { store, persistor } from "./redux/store";
 
+import sprite from "./image/sprite.svg?raw";
+
+const spriteContainer = document.createElement("div");
+spriteContainer.innerHTML = sprite;
+document.body.prepend(spriteContainer);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
