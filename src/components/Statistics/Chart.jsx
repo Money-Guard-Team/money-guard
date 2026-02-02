@@ -11,13 +11,9 @@ const Chart = ({ data, periodTotal }) => {
       {
         data: data.length > 0 ? data.map((d) => d.sum) : [1],
         backgroundColor:
-          data.length > 0
-            ? data.map((d) => d.color)
-            : ["rgba(255, 255, 255, 0.1)"],
+          data.length > 0 ? data.map((d) => d.color) : ["rgba(255, 255, 255, 0.1)"],
         borderColor:
-          data.length > 0
-            ? data.map((d) => d.color)
-            : ["rgba(255, 255, 255, 0.1)"],
+          data.length > 0 ? data.map((d) => d.color) : ["rgba(255, 255, 255, 0.1)"],
         borderWidth: 0,
         hoverOffset: 4,
       },
@@ -46,3 +42,4 @@ const Chart = ({ data, periodTotal }) => {
 };
 
 export default Chart;
+

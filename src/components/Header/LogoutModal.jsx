@@ -1,7 +1,8 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/authOperations";
 import { useNavigate } from "react-router-dom";
-import styles from "./LogoutModal.module.css"; // Stil dosyası oluşturmalısın
+import styles from "./LogoutModal.module.css"; 
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -10,10 +11,8 @@ const LogoutModal = ({ onClose }) => {
   const handleLogout = async () => {
     try {
       await dispatch(logOut()).unwrap();
-      // Redux store ve localStorage temizlenir (slice'ta zaten yapılıyor)
       navigate("/login");
     } catch (error) {
-      // Backend hatası olsa bile kullanıcıyı çıkış yap
       console.error("Logout error:", error);
       navigate("/login");
     }

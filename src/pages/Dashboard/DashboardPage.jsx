@@ -1,25 +1,33 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+
 import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import Currency from "../../components/Currency/Currency";
-import Balance from "../../components/Balance/Balance.jsx";
-import StatisticsDashboard from "../../components/Statistics/StatisticsDashboard";
+import Balance from "../../components/Balance/Balance";
+
+import ButtonAddTransaction from "../../components/Transactions/ButtonAddTransaction";
+import ModalAddTransaction from "../../components/Transactions/ModalAddTransaction";
+import ModalEditTransaction from "../../components/Transactions/ModalEditTransaction";
+
 import styles from "./DashboardPage.module.css";
 
-// HomeTab component'ini import et (arkadaşların yapacak)
-// import HomeTab from "../../components/Home/HomeTab";
 
 const DashboardPage = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.dashboardContainer}>
       <Header />
-      <div className={styles.content}>
-        {/* Sol Sidebar */}
-        <aside className={styles.sidebar}>
-          <Navigation />
-          <Balance />
-          <Currency />
+      <div className={styles.mainLayout}>
+        <aside className={styles.sideBar}>
+          <div className={styles.navBalance}>
+            <Navigation />
+            <div className={styles.balanceWrapper}>
+              <Balance />
+            </div>
+          </div>
+          <div className={styles.currencyWrapper}>
+            <Currency />
+          </div>
         </aside>
 
         {/* Divider */}
@@ -35,8 +43,16 @@ const DashboardPage = () => {
             {/* <Route path="home" element={<HomeTab />} /> */}
             <Route path="statistics" element={<StatisticsDashboard />} />
           </Routes>
+        <div className={styles.divider}></div>
+
+        <main className={styles.mainContent}>
+          <Outlet /> 
+          <ButtonAddTransaction />
         </main>
       </div>
+
+      <ModalAddTransaction />
+      <ModalEditTransaction />
     </div>
   );
 };

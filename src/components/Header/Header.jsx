@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import LogoutModal from "./LogoutModal";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -38,8 +37,12 @@ const Header = () => {
         </div>
       </header>
 
-      {isModalOpen && <LogoutModal onClose={() => setIsModalOpen(false)} />}
-    </>
+      <div className={styles.userBlock}>
+        <span className={styles.userName}>{user?.name || "Name"}</span>
+        <span className={styles.divider} />
+        <button className={styles.exitBtn}>Exit</button>
+      </div>
+    </header>
   );
 };
 

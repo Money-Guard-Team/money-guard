@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { MdHome, MdTimeline } from "react-icons/md";
+import { FaDollarSign } from "react-icons/fa";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {

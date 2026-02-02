@@ -4,32 +4,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/authOperations";
 import Loader from "./components/Loader/Loader";
 
-// Lazy loading ile performans optimizasyonu
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
-const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"));
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage"));
 const DashboardPage = lazy(() => import("./pages/Dashboard/DashboardPage"));
+const HomeTab = lazy(() => import("./components/HomeTab/HomeTab")); 
 
 function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector((state) => state.auth);
+  const { isRefreshing, isLoggedIn } = useSelector((state) => state.auth || {});
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
+  if (isRefreshing) return <Loader />;
+
+  return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/dashboard" />} />
+        <Route path="/register" element={!isLoggedIn ? <RegistrationPage /> : <Navigate to="/dashboard" />} />
 
-        {/* Private Routes */}
-        <Route path="/dashboard/*" element={<DashboardPage />} />
+        <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/login" />}>
+          <Route index element={<HomeTab />} />
+          <Route path="home" element={<HomeTab />} />
+        </Route>
 
-        {/* Hatalı URL'leri Login'e yönlendir */}
+        <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Suspense>

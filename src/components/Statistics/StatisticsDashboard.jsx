@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStatistics } from "../../redux/finance/financeOperations"; // Path'i kontrol et
+import { fetchStatistics } from "../../redux/finance/financeOperations";
 import Chart from "./Chart";
 import StatisticsTable from "./StatisticsTable";
 
+// Renk Paleti (Backend kategorileriyle eşleşmeli)
 const CATEGORY_COLORS = {
   "Main expenses": "#FED057",
   Products: "#FFD8D0",
@@ -57,13 +58,9 @@ const StatisticsDashboard = () => {
     <div className="flex flex-col md:flex-row gap-8 w-full h-full pt-8 md:pt-0">
       {/* SOL: Başlık ve Grafik */}
       <div className="flex-1 flex flex-col gap-6">
-        <h2 className="text-3xl text-white font-normal pl-4 md:pl-0">
-          Statistics
-        </h2>
+        <h2 className="text-3xl text-white font-normal pl-4 md:pl-0">Statistics</h2>
         {loading ? (
-          <div className="text-white text-center py-20">
-            Loading statistics...
-          </div>
+          <div className="text-white text-center py-20">Loading statistics...</div>
         ) : (
           <Chart data={chartData} periodTotal={stats?.expenseSummary || 0} />
         )}
@@ -110,3 +107,4 @@ const StatisticsDashboard = () => {
 };
 
 export default StatisticsDashboard;
+

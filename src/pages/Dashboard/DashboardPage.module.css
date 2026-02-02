@@ -1,13 +1,14 @@
-.wrapper {
+.dashboardContainer {
   display: flex;
   flex-direction: column;
   height: 100vh;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   color: #fff;
   font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
 }
 
-.content {
+.mainLayout {
   display: flex;
   flex: 1;
 }
@@ -54,7 +55,31 @@
 
   .main {
     padding: 20px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sideBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+}
+
+.balanceWrapper { display: none; }
+.currencyWrapper { display: none; }
+.divider { display: none; }
+
+@media (min-width: 768px) {
+  .mainLayout { padding: 0 32px; }
+  .sideBar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 0 20px 0;
   }
+  .navBalance { display: flex; flex-direction: column; gap: 28px; }
+  .balanceWrapper { display: block; }
+  .currencyWrapper { display: block; width: 336px; }
 }
 
 /* Mobil (320px - 767px) */
@@ -76,4 +101,15 @@
     margin: 10px 0;
     padding: 15px;
   }
+@media (min-width: 1280px) {
+  .mainLayout { flex-direction: row; padding: 0 16px; justify-content: center; }
+  .sideBar { width: 480px; padding: 40px 69px 0 0; }
+  .divider {
+    display: block;
+    width: 1px;
+    height: calc(100vh - 80px);
+    background: rgba(255, 255, 255, 0.25);
+    margin-right: 69px;
+  }
+  .mainContent { width: 715px; padding: 46px 0 0 0; }
 }
