@@ -11,13 +11,11 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// Reducer'lar
-import authReducer from "./auth/authSlice";
-import currencyReducer from "./currency/currencySlice";
-import globalReducer from "./global/globalSlice";
-import { transactionsReducer } from "./transactions/slice";
-import { balanceReducer } from "./balance/slice"; 
-import { financeReducer } from "./finance/financeSlice"; 
+import { authReducer } from "./auth/slice";
+import { modalsReducer } from "./Modals/slice";
+import { transactionsReducer } from "./transactions/slice.js";
+import { statisticsReducer } from "./Statistics/slice";
+import currencyReducer from "./currency/slice";
 
 const authPersistConfig = {
   key: "auth",
@@ -28,11 +26,10 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    global: globalReducer,
-    currency: currencyReducer,
+    modals: modalsReducer,
     transactions: transactionsReducer,
-    balance: balanceReducer,
-    finance: financeReducer,
+    statistics: statisticsReducer,
+    currency: currencyReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
