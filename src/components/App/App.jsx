@@ -26,7 +26,7 @@ function App() {
   const isAddOpen = useSelector(selectIsAddModalOpen);
 
   return (
-    <div className={clsx("app", isEditOpen || (isAddOpen && "block-scroll"))}>
+    <div className={clsx("app", (isEditOpen || isAddOpen) && "block-scroll")}>
       <Routes>
         <Route
           path="/"

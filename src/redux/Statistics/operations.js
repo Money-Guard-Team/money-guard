@@ -20,7 +20,7 @@ export const getTransactionsSummaryByPeriod = createAsyncThunk(
               ? null
               : savedDataLocal?.token?.slice(1, -1);
           token = savedToken || null;
-        } catch (err) {
+        } catch {
           token = null;
         }
       }
@@ -51,7 +51,7 @@ export const getTransactionsCategories = createAsyncThunk(
               ? null
               : savedDataLocal?.token?.slice(1, -1);
           token = savedToken || null;
-        } catch (err) {
+        } catch {
           token = null;
         }
       }

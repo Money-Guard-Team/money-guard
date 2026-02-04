@@ -1,0 +1,26 @@
+<svg width="480" height="190" viewBox="0 0 480 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="240" y1="0" x2="240" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7056B8" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#5A3FA5" stop-opacity="0.06" />
+    </linearGradient>
+    <linearGradient id="area" x1="240" y1="44" x2="240" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D3CBFF" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#D3CBFF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="line" x1="56" y1="116" x2="430" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF868D" />
+      <stop offset="1" stop-color="#FFB627" />
+    </linearGradient>
+  </defs>
+
+  <rect width="480" height="190" rx="0" fill="url(#bg)" />
+
+  <path d="M0 145C34 127 49 110 73 112C97 114 132 145 156 155C180 165 209 144 244 123C279 102 305 82 327 84C349 86 363 107 389 110C415 113 433 95 455 101C467 104 474 112 480 116V190H0V145Z" fill="url(#area)" />
+  <path d="M0 145C34 127 49 110 73 112C97 114 132 145 156 155C180 165 209 144 244 123C279 102 305 82 327 84C349 86 363 107 389 110C415 113 433 95 455 101C467 104 474 112 480 116" stroke="url(#line)" stroke-width="1.5" />
+
+  <circle cx="73" cy="112" r="3.5" fill="#432D79" stroke="#FF868D" />
+  <circle cx="327" cy="84" r="3.5" fill="#432D79" stroke="#FF868D" />
+  <text x="58" y="103" fill="#FF868D" font-size="11" font-family="Poppins, sans-serif">27.55</text>
+  <text x="314" y="74" fill="#FF868D" font-size="11" font-family="Poppins, sans-serif">30.00</text>
+</svg>

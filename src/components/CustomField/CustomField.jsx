@@ -16,7 +16,7 @@ const CustomField = ({ type, name, placeholder }) => {
           type={showPassword ? "text" : type}
           name={name}
           placeholder={placeholder}
-          autocomplete="off"
+          autoComplete="off"
         />
         {type === "password" ? (
           <svg

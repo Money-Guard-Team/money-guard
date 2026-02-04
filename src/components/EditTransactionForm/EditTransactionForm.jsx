@@ -17,32 +17,29 @@ import { toast } from "react-toastify";
 function EditTransactionForm() {
   const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
-  const [isChecked, setIsChecked] = useState(true);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const dispatch = useDispatch();
 
   const IdForEdit = useSelector(selectIsEditID);
   const foundObject = transactions.find((item) => item.id === IdForEdit);
 
-  const category = categories.find((cat) => cat.id === foundObject.categoryId);
+  const isExpense = foundObject?.type === "EXPENSE";
+
+  const category = foundObject
+    ? categories.find((cat) => cat.id === foundObject.categoryId)
+    : undefined;
   const categoryName =
-    foundObject.type === "INCOME"
+    foundObject?.type === "INCOME"
       ? "Income"
       : category
       ? category.name
       : "Unknown";
 
-  useEffect(() => {
-    if (foundObject.type === "INCOME") {
-      setIsChecked(false);
-    } else if (foundObject.type === "EXPENSE") {
-      setIsChecked(true);
-    }
-  }, [foundObject.type]);
-
-  const amountDefaultValue = Math.abs(foundObject.amount);
-  const startDateDefaultValue = new Date(foundObject.transactionDate);
-  const commentDefaultValue = foundObject.comment;
+  const amountDefaultValue = foundObject ? Math.abs(foundObject.amount) : 0;
+  const startDateDefaultValue = foundObject
+    ? new Date(foundObject.transactionDate)
+    : new Date();
+  const commentDefaultValue = foundObject?.comment || "";
 
   const schema = yup.object().shape({
     amount: yup.number().required("Number invalid value"),
@@ -54,6 +51,7 @@ function EditTransactionForm() {
     handleSubmit,
     register,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -63,6 +61,17 @@ function EditTransactionForm() {
       comment: commentDefaultValue,
     },
   });
+
+  useEffect(() => {
+    if (!foundObject) return;
+    reset({
+      amount: Math.abs(foundObject.amount),
+      transactionDate: new Date(foundObject.transactionDate),
+      comment: foundObject.comment,
+    });
+  }, [foundObject, reset]);
+
+  if (!foundObject) return null;
 
   const onSubmit = (data) => {
     const editedTransaction = {
@@ -103,7 +112,7 @@ function EditTransactionForm() {
           <div
             className={clsx(
               styles.type_text,
-              !isChecked && styles.income_active
+              !isExpense && styles.income_active
             )}
           >
             Income
@@ -126,14 +135,14 @@ function EditTransactionForm() {
           <div
             className={clsx(
               styles.type_text,
-              isChecked && styles.expense_active
+              isExpense && styles.expense_active
             )}
           >
             Expense
           </div>
         </div>
 
-        {isChecked && (
+        {isExpense && (
           <div className={styles.category_display}>{categoryName}</div>
         )}
 
