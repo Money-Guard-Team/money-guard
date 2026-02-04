@@ -1,49 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import css from "./Header.module.css";
+import { Icon } from "../../Icons";
+import LogoutModal from "../LogoutModal/LogoutModal";
+import { selectUser } from "../../redux/auth/selectors.js";
 import { useSelector } from "react-redux";
-import styles from "./Header.module.css";
-
 const Header = () => {
-  const user = useSelector((state) => state.auth?.user);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // Email'den kullanıcı adı oluştur (@'den önceki kısım)
-  const username = user?.email?.split("@")[0] || "User";
+    const user = useSelector(selectUser);
+    const displayName = user?.email ? user.email.split("@")[0] : "";
 
-  return (
-    <>
-      <header className={styles.header}>
-        <div className={styles.logoWrapper}>
-          <svg className={styles.logoIcon}>
-            <use href="#icon-logo" />
-          </svg>
-          <span className={styles.logoText}>Money Guard</span>
-        </div>
+    function LogoutHandle() {
+        setShowLogoutModal(true);
+        localStorage.removeItem("token");
+    }
 
-        <div className={styles.userBlock}>
-          <span className={styles.userName}>{username}</span>
-          <svg className={styles.divider}>
-            <use href="#icon-sidebarDivider"></use>
-          </svg>
-          <button
-            className={styles.exitBtn}
-            onClick={() => setIsModalOpen(true)}
-            type="button"
-          >
-            <svg>
-              <use href="#icon-exit"></use>
-            </svg>
-            <span className={styles.exitText}>Exit</span>
-          </button>
-        </div>
-      </header>
+    return (
+        <>
+            <nav className={css.navbar}>
+                <div className={css.navbarContainer}>
+                    <div className={css.logoGroup}>
+                        <Icon
+                            id="#icon-logo_mobile"
+                            className={css.icon}
+                        ></Icon>
+                    </div>
 
-      <div className={styles.userBlock}>
-        <span className={styles.userName}>{user?.name || "Name"}</span>
-        <span className={styles.divider} />
-        <button className={styles.exitBtn}>Exit</button>
-      </div>
-    </header>
-  );
+                    <div className={css.userActions}>
+                        <span className={css.userName}>{displayName}</span>
+                        <div className={css.divider}></div>
+                        <button className={css.exitBtn} onClick={LogoutHandle}>
+                            <Icon id="#icon-exit" className={css.iconExit} />
+                            <span className={css.spanExit}>Exit</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            {showLogoutModal && (
+                <LogoutModal onClose={() => setShowLogoutModal(false)} />
+            )}
+        </>
+    );
 };
 
 export default Header;

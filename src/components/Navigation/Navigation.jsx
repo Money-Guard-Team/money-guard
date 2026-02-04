@@ -1,50 +1,65 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { MdHome, MdTimeline } from "react-icons/md";
-import { FaDollarSign } from "react-icons/fa";
-import styles from "./Navigation.module.css";
+import css from "./Navigation.module.css";
+import { Icon } from "../../Icons";
 
-const Navigation = () => {
-  return (
-    <nav className={styles.navbar}>
-      {/* HOME */}
-      <NavLink
-        to="/dashboard/home"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkHome}`
-        }
-      >
-        <svg className={styles.icon}>
-          <use href="#icon-home" />
-        </svg>
-        <span className={styles.iconText}>Home</span>
-      </NavLink>
+function Navigation({ activeTab, onChange }) {
+    return (
+        <div className={css.navbar}>
+            <button
+                className={css.btn}
+                onClick={() => onChange("home")}
+                aria-pressed={activeTab === "home"}
+            >
+                <div
+                    className={`${css.navItem} ${
+                        activeTab === "home" ? css.navItemActive : ""
+                    }`}
+                >
+                    <Icon
+                        id="#icon-home-nav"
+                        className={`${css.navIcon} ${
+                            activeTab === "home" ? css.navIconActive : ""
+                        }`}
+                    />
+                </div>
+                <span className={css.span}>Home</span>
+            </button>
 
-      {/* STATISTICS */}
-      <NavLink
-        to="/dashboard/statistics"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ""} ${styles.navLinkStatistics}`
-        }
-      >
-        <svg className={styles.icon}>
-          <use href="#icon-statisticsBg" />
-          <use href="#icon-statisticsIn" width={16} x="4" y="1" />
-        </svg>
-        <span className={styles.iconText}>Statistics</span>
-      </NavLink>
+            <button
+                className={css.btn}
+                onClick={() => onChange("statistics")}
+                aria-pressed={activeTab === "statistics"}
+            >
+                <div
+                    className={`${css.navItem} ${
+                        activeTab === "statistics" ? css.navItemActive : ""
+                    }`}
+                >
+                    <Icon
+                        id="#icon-timeline"
+                        className={`${css.navIcon} ${
+                            activeTab === "statistics" ? css.navIconActive : ""
+                        }`}
+                    />
+                </div>
+                <span className={css.span}>Statistics</span>
+            </button>
 
-      {/* CURRENCY (mobile only) */}
-      <NavLink
-        to="/dashboard/currency"
-        className={({ isActive }) =>
-          `${styles.link} ${isActive ? styles.active : ""} ${styles.mobileOnly}`
-        }
-      >
-        <span className={styles.iconText}>💱 Currency</span>
-      </NavLink>
-    </nav>
-  );
-};
+            <button
+                className={`${css.navItem} ${css.itemCurr} ${
+                    activeTab === "currency" ? css.navItemActive : ""
+                }`}
+                onClick={() => onChange("currency")}
+                aria-pressed={activeTab === "currency"}
+            >
+                <Icon
+                    id="#icon-dolar"
+                    className={`${css.navIcon} ${
+                        activeTab === "currency" ? css.navIconActive : ""
+                    }`}
+                />
+            </button>
+        </div>
+    );
+}
 
 export default Navigation;

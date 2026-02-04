@@ -1,114 +1,88 @@
-/* Sol Navbar */
+/* Navbar Konteynırı */
 .navbar {
-  width: 200px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: max-content;
+    padding: 12px 18px;
+    border-radius: 18px;
 }
 
-.link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background 0.3s, color 0.3s;
-  text-decoration: none;
+/* Buton Genel Stili */
+.navItem {
+    width: 44px;
+    height: 44px;
+    border: none;
+    /* Varsayılan butonu sıfırla */
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.06);
 }
 
-.link:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* Buton İçindeki SVG */
+.navIcon {
+    width: 25px;
+    height: 25px;
+    fill: #b7a6d6;
+    /* Pasif ikon rengi */
+    transition: fill 140ms ease, transform 120ms ease;
 }
 
-/* Icon text */
-.iconText {
-  font-family: Poppins, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
+.navItemActive {
+    background: linear-gradient(135deg, #8b5cff 0%, #6e3bff 100%);
+    box-shadow: 0 12px 30px rgba(123, 77, 255, 0.42);
 }
 
-/* SVG icon size */
-.icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+/* Aktif Butonun İçindeki SVG */
+.navIconActive {
+    fill: #ffffff;
 }
 
-.navLinkHome svg {
-  color: rgba(255, 255, 255, 0.4);
+.navItem:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
-.navLinkHome.active svg {
-  color: rgba(115, 74, 239, 1);
-  background-color: white;
-  border-radius: 4px;
-}
-
-.navLinkStatistics svg use:first-child {
-  color: #ffffff66;
-  opacity: 0.6;
-}
-
-.navLinkStatistics.active svg use:first-child {
-  color: rgba(115, 74, 239, 1);
-  justify-content: center;
-  gap: 32px;
-  padding: 12px 0;
-}
-
-.link, .active {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  gap: 20px;
-  transition: font-weight 0.3s ease;
-}
-
-.iconWrapper {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 6px;
-  color: #523b7e;
-  font-size: 18px;
-}
-
-.active .iconWrapper {
-  background: #734aef;
-  color: #fff;
-  filter: drop-shadow(0px 3px 10px rgba(115, 74, 239, 0.5));
-}
-
-.active .text {
-  font-weight: 700;
-}
-
-.mobileOnly {
-  display: flex; 
+.span {
+    display: none;
 }
 
 @media (min-width: 768px) {
-  .nav {
-    flex-direction: column; 
-    align-items: flex-start;
-    gap: 12px;
-    padding: 0;
-  }
+    .itemCurr {
+        display: none;
+    }
 
-  .mobileOnly {
-    display: none; 
-  }
+    .span {
+        display: flex;
+        font-size: 20px;
+        color: thistle;
+        margin-left: 8px;
+    }
 
-  .text {
-    display: block;
-  }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navItem {
+        width: 25px;
+        height: 25px;
+        border-radius: 5%;
+    }
+
+    .navIcon {
+        width: 18px;
+        height: 18px;
+    }
 }
