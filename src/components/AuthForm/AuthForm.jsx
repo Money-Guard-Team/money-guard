@@ -8,12 +8,10 @@ import Bar from "../Bar/Bar";
 import style from "./authForm.module.css";
 
 const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
+  const isRegister = type === "register";
+
   return (
-    <div
-      className={`${type === "register" ? style.register : style.login} ${
-        style.formWrapper
-      }`}
-    >
+    <div className={`${isRegister ? style.register : style.login} ${style.formWrapper}`}>
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -22,7 +20,7 @@ const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
         {({ values: { confirmPassword, password } }) => (
           <Form className={style.form}>
             <Icon id="#icon-logo_mobile" className={style.icon_mob}></Icon>
-            {type == "register" && (
+            {isRegister && (
               <CustomField type="text" name="username" placeholder="Name" />
             )}
             <CustomField type="text" name="email" placeholder="E-mail" />
@@ -31,14 +29,14 @@ const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
               name="password"
               placeholder="Password"
             />
-            {type === "register" && (
+            {isRegister && (
               <CustomField
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm password"
               />
             )}
-            {type === "register" && (
+            {isRegister && (
               <Bar password={password} confirmPassword={confirmPassword} />
             )}
 
@@ -46,15 +44,15 @@ const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
               className={`${style.button_main} ${style.colored} `}
               type="submit"
             >
-              {type === "register" ? "Register" : "Login"}
+              {isRegister ? "Register" : "Log in"}
             </button>
 
-            <Link to={type === "register" ? "/login" : "/register"}>
+            <Link to={isRegister ? "/login" : "/register"}>
               <button
                 className={`${style.button_secondary} ${style.whiteButton}`}
-                type="submit"
+                type="button"
               >
-                {type === "register" ? "Login" : "Register"}
+                {isRegister ? "Log in" : "Register"}
               </button>
             </Link>
           </Form>

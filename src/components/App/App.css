@@ -42,9 +42,9 @@
 
 .modal_backdrop {
   border-radius: 8px;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px) var(--glass-filter);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(83, 61, 186, 0.22);
 }
 
 /* Scrollbar styles */

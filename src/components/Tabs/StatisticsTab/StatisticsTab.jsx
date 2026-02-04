@@ -21,7 +21,7 @@ function StatisticsTab() {
                 <h2 className={styles.title}>Statistics</h2>
                 <StatisticsChart />
             </div>
-            <div>
+            <div className={styles.dashboardAndTable}>
                 <StatisticsDashboard />
                 <StatisticsTable />
             </div>

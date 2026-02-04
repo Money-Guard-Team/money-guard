@@ -1,7 +1,4 @@
-/* Modern Normalize */
 @import "modern-normalize/modern-normalize.css";
-
-/* Global CSS Variables */
 @import "./utils/variables.css";
 
 @font-face {
@@ -25,18 +22,10 @@
 :root {
   font-family: "Poppins", sans-serif;
   font-size: 18px;
-  letter-spacing: 0.1em;
-  line-height: 1.5;
   font-weight: 400;
-  /* overflow: hidden; */
-
+  line-height: 1.5;
+  letter-spacing: 0.1em;
   color: var(--text-color);
-  background-color: black;
-  background-image: url("./../public/img/gradient-desktop.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -44,20 +33,24 @@
   -webkit-text-size-adjust: 100%;
 }
 
-@media only screen and (max-width: 767.98px) {
-  :root {
-    background-image: url("./../public/img/gradient-mobile.webp");
-  }
+html,
+body,
+#root {
+  min-height: 100%;
 }
-@media only screen and (min-width: 768px) {
-  :root {
-    background-image: url("./../public/img/gradient-tablet.webp");
-  }
-}
-@media only screen and (min-width: 1280px) {
-  :root {
-    background-image: url("./../public/img/gradient-desktop.webp");
-  }
+
+body {
+  margin: 0;
+  background-color: #0b061a;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(132, 76, 255, 0.78), rgba(132, 76, 255, 0) 40%),
+    radial-gradient(circle at 82% 84%, rgba(255, 88, 207, 0.58), rgba(255, 88, 207, 0) 38%),
+    radial-gradient(circle at 82% 30%, rgba(96, 132, 255, 0.42), rgba(96, 132, 255, 0) 38%),
+    linear-gradient(112deg, #2f1b74 0%, #14102b 46%, #240d4f 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
 }
 
 h1,
@@ -68,10 +61,6 @@ h5,
 h6,
 p {
   margin: 0;
-}
-
-p:last-child {
-  margin-bottom: 0;
 }
 
 ul,
@@ -87,9 +76,10 @@ a {
 }
 
 button {
-  cursor: pointer;
   border: none;
-  background-color: transparent;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
 }
 
 img {

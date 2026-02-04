@@ -52,6 +52,11 @@
     display: none;
 }
 
+.spanActive {
+    color: var(--white-color);
+    font-weight: 700;
+}
+
 @media (min-width: 768px) {
     .itemCurr {
         display: none;

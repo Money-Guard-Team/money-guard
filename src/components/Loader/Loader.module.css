@@ -4,9 +4,9 @@
   align-items: center;
   min-height: 400px;
   width: 100%;
-  background: rgba(74, 86, 226, 0.1);
+  background: rgba(83, 61, 186, 0.18);
   border-radius: 8px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px) var(--glass-filter);
 }
 
 .loaderContainer :global(.vortex-wrapper) {

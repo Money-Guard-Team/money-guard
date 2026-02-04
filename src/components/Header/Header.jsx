@@ -12,7 +12,6 @@ const Header = () => {
 
     function LogoutHandle() {
         setShowLogoutModal(true);
-        localStorage.removeItem("token");
     }
 
     return (

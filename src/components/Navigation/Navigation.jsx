@@ -21,7 +21,11 @@ function Navigation({ activeTab, onChange }) {
                         }`}
                     />
                 </div>
-                <span className={css.span}>Home</span>
+                <span
+                    className={`${css.span} ${activeTab === "home" ? css.spanActive : ""}`}
+                >
+                    Home
+                </span>
             </button>
 
             <button
@@ -41,7 +45,11 @@ function Navigation({ activeTab, onChange }) {
                         }`}
                     />
                 </div>
-                <span className={css.span}>Statistics</span>
+                <span
+                    className={`${css.span} ${activeTab === "statistics" ? css.spanActive : ""}`}
+                >
+                    Statistics
+                </span>
             </button>
 
             <button
