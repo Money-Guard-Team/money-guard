@@ -10,7 +10,7 @@ import {
   selectSummary,
 } from "../../redux/Statistics/selectors";
 import { getTrasactionCategoryColor } from "../../constants/TransactionConstants";
-import LoadingSpinner from "../common/LoadingSpinner/Loader";
+import Loader from "../Loader/Loader";
 
 const StatisticsChart = () => {
   const isLoading = useSelector(selectStatLoading);
@@ -67,7 +67,7 @@ const StatisticsChart = () => {
   return (
     <div className={styles.chartContainer}>
       {isLoading ? (
-        <LoadingSpinner />
+        <Loader />
       ) : (
         <>
           <div style={{ width: "100%", height: "100%" }}>

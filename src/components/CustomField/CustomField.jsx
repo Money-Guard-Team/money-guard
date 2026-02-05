@@ -4,7 +4,7 @@ import { useState } from "react";
 import style from "./customField.module.css";
 import { Icon } from "../../Icons";
 
-import Icons from "../../sprite.svg";
+import Icons from "../../assets/images/sprite.svg";
 
 const CustomField = ({ type, name, placeholder }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,9 +24,8 @@ const CustomField = ({ type, name, placeholder }) => {
             onClick={() => setShowPassword(!showPassword)}
           >
             <use
-              href={`${Icons}${
-                showPassword ? "#icon-eye-blocked" : "#icon-eye"
-              }`}
+              href={`${Icons}${showPassword ? "#icon-eye-blocked" : "#icon-eye"
+                }`}
             />
           </svg>
         ) : (

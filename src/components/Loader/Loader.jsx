@@ -1,26 +1,16 @@
-import React from "react";
-import { Vortex } from "react-loader-spinner";
-import styles from "./Loader.module.css";
 
-const Loader = () => {
+import { BeatLoader } from "react-spinners";
+import styles from "./Loader.module.css";
+import clsx from "clsx";
+
+const Loader = ({ fullScreen = false, size = 15, color = "#4A56E2" }) => {
   return (
-    <div className={styles.loaderContainer}>
-      <Vortex
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="vortex-loading"
-        wrapperStyle={{}}
-        wrapperClass="vortex-wrapper"
-        colors={[
-          "#FFB627",
-          "#9E40BA",
-          "#7000FF",
-          "#4A56E2",
-          "#FFC727",
-          "#734AEF",
-        ]}
-      />
+    <div
+      className={clsx(styles.loaderContainer, {
+        [styles.fullScreen]: fullScreen,
+      })}
+    >
+      <BeatLoader color={color} size={size} />
     </div>
   );
 };

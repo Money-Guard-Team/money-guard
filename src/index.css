@@ -1,13 +1,12 @@
 @import "modern-normalize/modern-normalize.css";
-@import "./utils/variables.css";
+@import "./styles/variables.css";
 
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2")
-    format("woff2");
+  src: url("https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2") format("woff2");
 }
 
 @font-face {
@@ -15,8 +14,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2")
-    format("woff2");
+  src: url("https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2") format("woff2");
 }
 
 :root {

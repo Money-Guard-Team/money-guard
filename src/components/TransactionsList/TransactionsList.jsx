@@ -12,7 +12,7 @@ import {
 } from "../../redux/transactions/selectors";
 import { selectCategories } from "../../redux/Statistics/selectors";
 import { getTransactionsCategories } from "../../redux/Statistics/operations";
-import { getFormattedTransactions } from "../../helpers/transactionsFormatter";
+import { getFormattedTransactions } from "../../utils/transactionsFormatter";
 import useMedia from "../../hooks/useMedia.jsx";
 
 const TransactionList = () => {

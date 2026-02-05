@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
-  getTransactionSummary,
   getCategories,
-} from "../../services/services-api.js";
+  getTransactionSummary,
+} from "../../api/transactions.js";
 import { setToken } from "../../api/userTransactionApi.js";
 
 export const getTransactionsSummaryByPeriod = createAsyncThunk(
