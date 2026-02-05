@@ -1,72 +1,76 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
-  getCategories,
-  getTransactionSummary,
+    getCategories,
+    getTransactionSummary,
 } from "../../api/transactions.js";
 import { setToken } from "../../api/userTransactionApi.js";
 
-export const getTransactionsSummaryByPeriod = createAsyncThunk(
-  "statistics/getTransactionsSummaryByPeriod",
-  async (params, thunkAPI) => {
+const getTokenFromStorage = () => {
     try {
-      let token = thunkAPI.getState().auth.token;
-      // If Redux rehydration hasn't run yet, try to read persisted token from localStorage
-      if (!token) {
-        try {
-          const savedDataLocal = JSON.parse(localStorage.getItem("persist:auth"));
-          const savedToken =
+        const savedDataLocal = JSON.parse(localStorage.getItem("persist:auth"));
+        const savedToken =
             savedDataLocal?.token === "null"
-              ? null
-              : savedDataLocal?.token?.slice(1, -1);
-          token = savedToken || null;
-        } catch {
-          token = null;
-        }
-      }
+                ? null
+                : savedDataLocal?.token?.slice(1, -1);
 
-      if (!token) {
-        throw new Error("No token found");
-      }
-      setToken(token);
-      const data = await getTransactionSummary(params);
-      return data;
-    } catch (error) {
-      toast.error(error.response?.data?.message || "İşlem özeti alınamadı");
-      return thunkAPI.rejectWithValue(error.message);
+        return savedToken || null;
+    } catch {
+        return null;
     }
-  }
+};
+
+export const getTransactionsSummaryByPeriod = createAsyncThunk(
+    "statistics/getTransactionsSummaryByPeriod",
+    async (params, thunkAPI) => {
+        try {
+            let token = thunkAPI.getState().auth.token;
+
+            if (!token) {
+                token = getTokenFromStorage();
+            }
+
+            // Token yoksa kullanıcı login olmamış demektir, toast basma
+            if (!token) {
+                return thunkAPI.rejectWithValue("No token");
+            }
+
+            setToken(token);
+            const data = await getTransactionSummary(params);
+            return data;
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message || "İşlem özeti alınamadı",
+            );
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
 );
 
 export const getTransactionsCategories = createAsyncThunk(
-  "statistics/getTransactionsCategories",
-  async (_, thunkAPI) => {
-    try {
-      let token = thunkAPI.getState().auth.token;
-      if (!token) {
+    "statistics/getTransactionsCategories",
+    async (_, thunkAPI) => {
         try {
-          const savedDataLocal = JSON.parse(localStorage.getItem("persist:auth"));
-          const savedToken =
-            savedDataLocal?.token === "null"
-              ? null
-              : savedDataLocal?.token?.slice(1, -1);
-          token = savedToken || null;
-        } catch {
-          token = null;
-        }
-      }
+            let token = thunkAPI.getState().auth.token;
 
-      if (!token) {
-        throw new Error("No token found");
-      }
-      setToken(token);
-      const data = await getCategories();
-      return data;
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message || "Categories could not be retrieved"
-      );
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+            if (!token) {
+                token = getTokenFromStorage();
+            }
+
+            // Token yoksa kullanıcı login olmamış demektir, toast basma
+            if (!token) {
+                return thunkAPI.rejectWithValue("No token");
+            }
+
+            setToken(token);
+            const data = await getCategories();
+            return data;
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message ||
+                    "Categories could not be retrieved",
+            );
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
 );
