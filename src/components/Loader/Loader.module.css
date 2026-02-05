@@ -2,49 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
   width: 100%;
-  background: rgba(83, 61, 186, 0.18);
-  border-radius: 8px;
-  backdrop-filter: blur(10px) var(--glass-filter);
+  height: 100%;
+  min-height: 100px; /* Ensure visibility in small containers */
 }
 
-.loaderContainer :global(.vortex-wrapper) {
-  animation: fadeIn 0.5s ease-in;
-  transform-origin: center center;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .loaderContainer {
-    min-height: 300px;
-  }
-  .loaderContainer :global(.vortex-wrapper) {
-    transform: scale(0.8);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .loaderContainer {
-    min-height: 250px;
-  }
-  .loaderContainer :global(.vortex-wrapper) {
-    transform: scale(0.7);
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .loaderContainer {
-    padding: 1rem;
-  }
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(5px);
 }

@@ -3,7 +3,7 @@ import StatisticsDashboard from "../../StatisticsDashboard/StatisticsDashboard";
 import StatisticsChart from "../../StatisticsChart/StatisticsChart";
 import styles from "./StatisticsTab.module.css";
 import { useEffect, useState } from "react";
-import LoadingScreenSharedLayoutPages from "../../common/LoadingScreenSharedLayoutPages/LoadingScreenSharedLayoutPages";
+import Loader from "../../Loader/Loader";
 function StatisticsTab() {
     const [forcedLoading, setForcedLoading] = useState(true);
 
@@ -12,7 +12,7 @@ function StatisticsTab() {
     }, [forcedLoading]);
 
     if (forcedLoading) {
-        return <LoadingScreenSharedLayoutPages />;
+        return <Loader />;
     }
 
     return (
