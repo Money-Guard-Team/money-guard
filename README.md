@@ -95,27 +95,20 @@ Money Guard, kullanıcıların gelir ve giderlerini takip edebilmelerini, finans
 ### Giriş & Kayıt Ekranları
 
 <p align="center">
-  <img src="./docs/screenshots/login.png" width="45%" alt="Giriş Ekranı">
-  <img src="./docs/screenshots/register.png" width="45%" alt="Kayıt Ekranı">
+  <img src="docs/loginPage.png" width="45%" alt="Giriş Ekranı">
+  <img src="docs/registerPage.png" width="45%" alt="Kayıt Ekranı">
 </p>
 
 ### Ana Dashboard
 
 <p align="center">
-  <img src="./docs/screenshots/dashboard.png" width="90%" alt="Dashboard">
+  <img src="docs/dashboard.png" width="90%" alt="Dashboard">
 </p>
 
 ### İstatistikler & Grafikler
 
 <p align="center">
-  <img src="./docs/screenshots/statistics.png" width="90%" alt="İstatistikler">
-</p>
-
-### Döviz Kurları
-
-<p align="center">
-  <img src="./docs/screenshots/currency.png" width="45%" alt="Döviz Kurları">
-  <img src="./docs/screenshots/mobile-view.png" width="45%" alt="Mobil Görünüm">
+  <img src="docs/dashboard.png" width="90%" alt="İstatistikler">
 </p>
 
 </details>
@@ -279,7 +272,7 @@ gitGraph
 
 ## 📡 API Dokümantasyonu
 
-**Base URL:** `https://wallet.b.goit.study/api`
+**Base URL:** `https://wallet.b.goit.study/docs/`
 
 ### Kimlik Doğrulama
 
@@ -418,12 +411,6 @@ chore: Build veya yardımcı araç değişiklikleri
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white&style=for-the-badge)](https://github.com/Money-Guard-Team)
 [![Email](https://img.shields.io/badge/-Email-EA4335?logo=gmail&logoColor=white&style=for-the-badge)](mailto:support@moneyguard.com)
 [![Discord](https://img.shields.io/badge/-Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/moneyguard)
-
-### Proje Sahipleri
-
-Made with ❤️ by Money Guard Team
-
-⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
 
 </div>
 
