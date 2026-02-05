@@ -9,11 +9,6 @@
 [![Vite](https://img.shields.io/badge/Vite-5.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-[Demo](https://money-guard-demo.netlify.app) • [Dokümantasyon](#) • [Hata Bildir](https://github.com/Money-Guard-Team/money-guard/issues)
-
-![Money Guard Dashboard](./docs/screenshots/dashboard-preview.png)
-_Ana kontrol paneli görünümü_
-
 </div>
 
 ---
